@@ -30,42 +30,8 @@ export function Dashboard() {
         return hoursToday.concat(hoursTomorrow)
     }
 
-    const changeBackgroundNight = () => {
-        // if (! response?.current?.is_day) {
-        //     return
-        // }
-
-        const body = document.querySelector('body')
-
-        const propName = 'background'
-        const propValue = 'linear-gradient(90deg, rgba(24,24,24,1) 0%, rgba(26,31,255,1) 100%)'        
-
-        console.log('entrou', body, propValue)
-
-        body.style[propName] = propValue
-    }
-
-    const changeBackgroundNight2 = () => {
-        // if (! response?.current?.is_day) {
-        //     return
-        // }
-
-        const body = document.querySelector('body')
-
-        const propName = 'animation'
-        const propValue = 'changeBackgroundColor 7s infinite'        
-
-        console.log('2222', body, propValue)
-
-        body.style[propName] = propValue
-    }
-
     useEffect(() => {
         handleGetForecast()
-
-        setTimeout(() => {
-            // changeBackgroundNight2()
-        }, 2000)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
