@@ -210,8 +210,6 @@ export function IconCurrent({ condition }) {
     const weather = allWeathers.find((element) => element.weather === condition)
 
     return weather.icon
-
-    console.log(weather)
 }
 
 IconCurrent.propTypes = {

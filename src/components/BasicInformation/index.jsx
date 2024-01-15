@@ -4,6 +4,7 @@ import { Box } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { useRequestCurrent } from '../../hooks/Request/useRequestCurrent'
 import { CurrentWeatherCard } from '../CurrentWeatherCard'
+import { HourWeatherCard } from '../HourWeatherCard'
 
 export function BasicInformation() {
     const { getCurrent } = useRequestCurrent()
@@ -27,6 +28,11 @@ export function BasicInformation() {
                 max = {32}
                 min = {22}
             />
+            <HourWeatherCard 
+                hour={24}
+                temp={32}
+            />
+            
         </Box>
     )
 }
