@@ -7,6 +7,7 @@
     /* max-width: 400px; */
     width: 100%;
     padding: 2px;
+    margin-bottom: 20px;
 }
 
 .linhaMinMaxTemp {
@@ -28,4 +29,12 @@
 .labelChanceOfRain {
     font-size: .9rem;
     color: rgb(23, 118, 212);
+}
+
+.listDaysForecast {
+    display:flex;
+    gap:16px;
+    flex-direction:column;
+    height: 300px;
+    overflow-y: scroll;
 }

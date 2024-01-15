@@ -8,17 +8,13 @@ import { DayForecast } from "./Components/DayForecast";
 
 export function DaysForecast({ days }) {
     return (
-        <Box className={styles.container}>
+        <Box className={`${styles.container} shadowCard`}>
             <TitleCard
                 icon={<CalendarMonthIcon />}
                 title="Days Forecast"
             />
 
-            <Box
-                display="flex"
-                gap={2}
-                flexDirection="column"
-            >
+            <Box className={styles.listDaysForecast}>
                 {days?.map((day, index) => {
                     return (
                         <DayForecast

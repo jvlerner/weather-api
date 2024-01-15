@@ -25,8 +25,6 @@ export function Dashboard() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    console.log(response)
-
     return (
         <Box className={styles.container}>
             <Box sx={{ display:'flex', flexDirection:'column', marginTop: 2, fontSize: '25px', fontWeight: 700 }}>

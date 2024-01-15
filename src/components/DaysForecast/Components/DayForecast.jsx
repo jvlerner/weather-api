@@ -17,6 +17,7 @@ export function DayForecast({ date, icon, minTemp, maxTemp, chanceOfRain }) {
             display="flex"
             gap={2}
             justifyContent="space-around"
+            alignItems="center"
         >
             <Box width="100px">
                 {dayOfTheWeek === currentDay ? 'Today' : DAYS_OF_THE_WEEK[dayOfTheWeek]}

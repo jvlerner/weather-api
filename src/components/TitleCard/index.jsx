@@ -6,11 +6,7 @@ import styles from './styles.module.css'
 export function TitleCard({ icon, title }) {
     return (
         <>
-            <Box
-                display="flex"
-                alignItems="center"
-                gap="4px"
-            >
+            <Box className={styles.boxTitleCard}>
                 { icon }
 
                 <Typography variant="subtitle2">

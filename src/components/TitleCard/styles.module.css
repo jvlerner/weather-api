@@ -6,3 +6,10 @@
     background: #d9d9d936;
     margin: 3px;
 }
+
+.boxTitleCard {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 10px;
+}

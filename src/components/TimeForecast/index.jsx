@@ -8,7 +8,7 @@ import { TitleCard } from '../TitleCard'
 
 export function TimeForecast({ hours }) {
     return (
-        <Box className={styles.containerHour}>
+        <Box className={`${styles.containerHour} shadowCard`}>
             <TitleCard
                 icon={<AccessTimeIcon />}
                 title="Time Forecast"

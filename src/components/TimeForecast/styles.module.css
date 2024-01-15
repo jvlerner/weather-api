@@ -18,7 +18,7 @@
     
 }
 
-.scrollHour::-webkit-scrollbar {
+/* .scrollHour::-webkit-scrollbar {
     background-color: #ffffff00; 
     padding: 2px;
     width: auto;
@@ -33,4 +33,4 @@
 .scrollHour::-webkit-scrollbar-thumb:hover {
     background-color: #ffffff69; 
     border-radius: 10px;      
-}
+} */
