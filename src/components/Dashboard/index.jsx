@@ -7,18 +7,22 @@ import { CurrentWeatherCard } from '../CurrentWeatherCard'
 import styles from './styles.module.css'
 import { TimeForecast } from '../TimeForecast'
 import { DaysForecast } from '../DaysForecast'
-import { SearchLocal } from '../SearchLocal'
 
 export function Dashboard() {
     const { getForecast } = useRequestForecast()
     const [response, setResponse] = useState([])
 
-    useEffect(() => {
+    const handleGetForecast = () => {
         getForecast('Palhoça', 10, true, true).then((response) => {
             const data = response?.data
   
             setResponse(data)
-          })
+        })
+    }
+
+    useEffect(() => {
+        handleGetForecast()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     console.log(response)
@@ -26,7 +30,6 @@ export function Dashboard() {
     return (
         <Box className={styles.container}>
             <Box sx={{ display:'flex', flexDirection:'column', marginTop: 2, fontSize: '25px', fontWeight: 700 }}>
-                {/* <SearchLocal label="Palhoça" /> */}
                 {response.location?.name} - {response.location?.region}
             </Box>
 

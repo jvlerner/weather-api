@@ -23,7 +23,7 @@ export function DayForecast({ date, icon, minTemp, maxTemp, chanceOfRain }) {
             </Box>
             
             <Box className={styles.rowChanceOfRain}>
-                <img src={icon} width="30px" />
+                <img src={icon} width="30px" alt="Icon" />
 
                 { chanceOfRain > 0 ? (
                     <Box className={styles.labelChanceOfRain}>

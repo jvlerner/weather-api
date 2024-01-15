@@ -12,7 +12,8 @@ export function CurrentWeatherCard({ currentTemp, icon, condition, max, min }) {
                 <Typography className={styles.temp} variant="h2" >
                     {currentTemp}º
                 </Typography>
-                <img src ={icon}/>
+
+                <img src ={icon} alt="Icon" />
             </Box>
             <Typography variant="h6" >{condition}</Typography>
             <Box className={styles.variant}>

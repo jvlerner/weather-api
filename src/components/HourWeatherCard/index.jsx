@@ -7,10 +7,12 @@ import styles from './styles.module.css';
 export function HourWeatherCard({ icon, hour, temp }) {
     return (
         <Box className={styles.container} >
-             <Typography variant="subtitle2">
+            <Typography variant="subtitle2">
                 {hour} 
-                </Typography>
-             <img className={styles.icon} src ={icon}/>
+            </Typography>
+
+            <img className={styles.icon} src ={icon} alt="icon" />
+
             <Typography variant="subtitle2" >
                 {temp}º
             </Typography>
