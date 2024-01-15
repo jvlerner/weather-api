@@ -27,8 +27,14 @@ LottieFile.propTypes = {
     animationData: PropTypes.instanceOf(Object).isRequired,
     isStopped: PropTypes.bool,
     isPaused: PropTypes.bool,
-    height: PropTypes.number,
-    width: PropTypes.number
+    height: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number
+    ]),
+    width: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number
+    ])
 }
 
 LottieFile.defaultProps = {

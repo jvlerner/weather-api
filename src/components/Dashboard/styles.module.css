@@ -16,6 +16,13 @@
     width: 90%;
 }
 
+.boxLottieCloud {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
 @media (min-width: 768px) {
     .boxCards {
         width: 60%;

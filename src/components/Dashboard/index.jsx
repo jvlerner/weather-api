@@ -7,6 +7,8 @@ import { CurrentWeatherCard } from '../CurrentWeatherCard'
 import styles from './styles.module.css'
 import { TimeForecast } from '../TimeForecast'
 import { DaysForecast } from '../DaysForecast'
+import { LottieFile } from '../LottieFile'
+import lottieCloud from '../../assets/lotties/cloud.json'
 
 export function Dashboard() {
     const { getForecast } = useRequestForecast()
@@ -20,13 +22,59 @@ export function Dashboard() {
         })
     }
 
+    const mergeArrayHours = (hoursToday, hoursTomorrow) => {
+        if (!hoursToday || !hoursTomorrow) {
+            return []
+        }
+
+        return hoursToday.concat(hoursTomorrow)
+    }
+
+    const changeBackgroundNight = () => {
+        // if (! response?.current?.is_day) {
+        //     return
+        // }
+
+        const body = document.querySelector('body')
+
+        const propName = 'background'
+        const propValue = 'linear-gradient(90deg, rgba(24,24,24,1) 0%, rgba(26,31,255,1) 100%)'        
+
+        console.log('entrou', body, propValue)
+
+        body.style[propName] = propValue
+    }
+
+    const changeBackgroundNight2 = () => {
+        // if (! response?.current?.is_day) {
+        //     return
+        // }
+
+        const body = document.querySelector('body')
+
+        const propName = 'animation'
+        const propValue = 'changeBackgroundColor 7s infinite'        
+
+        console.log('2222', body, propValue)
+
+        body.style[propName] = propValue
+    }
+
     useEffect(() => {
         handleGetForecast()
+
+        setTimeout(() => {
+            // changeBackgroundNight2()
+        }, 2000)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
         <Box className={styles.container}>
+            <Box className={styles.boxLottieCloud}>
+                <LottieFile animationData={lottieCloud} height="100%" width="100%" />
+            </Box>
+
             <Box sx={{ display:'flex', flexDirection:'column', marginTop: 2, fontSize: '25px', fontWeight: 700 }}>
                 {response.location?.name} - {response.location?.region}
             </Box>
@@ -40,7 +88,9 @@ export function Dashboard() {
             />
 
             <Box className={styles.boxCards}>
-                <TimeForecast hours={response?.forecast?.forecastday[0]?.hour} />
+                <TimeForecast
+                    hours={mergeArrayHours(response?.forecast?.forecastday[0]?.hour, response?.forecast?.forecastday[1]?.hour)}
+                />
 
                 <DaysForecast days={response?.forecast?.forecastday} />
             </Box>
