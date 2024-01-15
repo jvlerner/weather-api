@@ -2,18 +2,17 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
-import { IconCurrent } from '../IconCurrent';
 import styles from './styles.module.css';
 
-export function CurrentWeatherCard({ currentTemp, condition, max, min }) {
+export function CurrentWeatherCard({ currentTemp, icon, condition, max, min }) {
     return (
         <Box className={styles.container} >
             <Typography variant="h6" >Current Weather</Typography>
             <Box className={styles.temperature} >
-                <Typography variant="h2" >
-                    {currentTemp} º
+                <Typography className={styles.temp} variant="h2" >
+                    {currentTemp}º
                 </Typography>
-                <IconCurrent condition={condition} />
+                <img src ={icon}/>
             </Box>
             <Typography variant="h6" >{condition}</Typography>
             <Box className={styles.variant}>
@@ -26,5 +25,8 @@ export function CurrentWeatherCard({ currentTemp, condition, max, min }) {
 
 CurrentWeatherCard.propTypes = {
     currentTemp: PropTypes.number.isRequired,
-    condition: PropTypes.string.isRequired
+    condition: PropTypes.string.isRequired,
+    max: PropTypes.number.isRequired,
+    min: PropTypes.number.isRequired,
+    icon: PropTypes.string.isRequired
 }

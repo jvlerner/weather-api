@@ -1,0 +1,31 @@
+.container {
+    display:flex;
+    flex-direction:column;
+    border-radius: 10px;
+    background-color:rgba(0,0,0,0.1);
+    height: auto;
+    /* max-width: 400px; */
+    width: 100%;
+    padding: 2px;
+}
+
+.linhaMinMaxTemp {
+    width: 50px;
+    height: 5px;
+    border: none;
+    background: #dbdbdbad;
+    border-radius: 10px;
+    margin: 0 10px;
+}
+
+.rowChanceOfRain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.labelChanceOfRain {
+    font-size: .9rem;
+    color: rgb(23, 118, 212);
+}

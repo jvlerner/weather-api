@@ -1,11 +1,18 @@
 import { createTheme } from '@mui/material/styles';
-import { green } from '@mui/material/colors';
+import { blue } from '@mui/material/colors';
 
 export const theme = createTheme({
     palette: {
         primary: {
-          main: green[500],
+          main: blue[300],
         },
+    },
+    components: {
+      MuiSvgIcon: {
+        defaultProps: {
+          fontSize: '12px'
+        }
+      }
     },
     typography: {
       fontFamily: [
