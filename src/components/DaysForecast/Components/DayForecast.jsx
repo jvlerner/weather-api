@@ -34,9 +34,9 @@ export function DayForecast({ date, icon, minTemp, maxTemp, chanceOfRain }) {
             </Box>
 
             <Box display="flex" alignItems="center">
-                { minTemp }
+                { minTemp }º
                 <hr className={styles.linhaMinMaxTemp}></hr>
-                { maxTemp }
+                { maxTemp }º
             </Box>
 
         </Box>
