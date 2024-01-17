@@ -8,19 +8,20 @@ const DAYS_OF_THE_WEEK = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'
 export function DayForecast({ date, icon, minTemp, maxTemp, chanceOfRain }) {
     const dateForecast = new Date(date)
     const dayOfTheWeek = dateForecast.getUTCDay()
+    const dayOfMonth = dateForecast.getDate()
 
     const currentDate = new Date()
-    const currentDay = currentDate.getUTCDay()
+    const currentDay = currentDate.getDate()
 
-    return (
+    return currentDate <= dateForecast? (
         <Box
             display="flex"
             gap={2}
             justifyContent="space-around"
             alignItems="center"
         >
-            <Box width="100px">
-                {dayOfTheWeek === currentDay ? 'Today' : DAYS_OF_THE_WEEK[dayOfTheWeek]}
+            <Box width="120px">
+                {dayOfMonth === currentDay ? 'Today' : DAYS_OF_THE_WEEK[dayOfTheWeek] + " "+ dayOfMonth}
             </Box>
             
             <Box className={styles.rowChanceOfRain}>
@@ -40,7 +41,7 @@ export function DayForecast({ date, icon, minTemp, maxTemp, chanceOfRain }) {
             </Box>
 
         </Box>
-    )
+    ):""
 }
 
 DayForecast.propTypes = {
