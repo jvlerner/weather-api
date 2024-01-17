@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Box } from '@mui/material'
 import styles from '../styles.module.css'
 
-const DAYS_OF_THE_WEEK = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+const DAYS_OF_THE_WEEK = ['Saturday','Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
 
 export function DayForecast({ date, icon, minTemp, maxTemp, chanceOfRain }) {
     const dateForecast = new Date(date)
@@ -13,7 +13,7 @@ export function DayForecast({ date, icon, minTemp, maxTemp, chanceOfRain }) {
     const currentDate = new Date()
     const currentDay = currentDate.getDate()
 
-    return currentDate <= dateForecast? (
+    return currentDay <= dayOfMonth? (
         <Box
             display="flex"
             gap={2}
@@ -21,7 +21,7 @@ export function DayForecast({ date, icon, minTemp, maxTemp, chanceOfRain }) {
             alignItems="center"
         >
             <Box width="120px">
-                {dayOfMonth === currentDay ? 'Today' : DAYS_OF_THE_WEEK[dayOfTheWeek] + " "+ dayOfMonth}
+                {dayOfMonth === currentDay ? 'Today' : DAYS_OF_THE_WEEK[dayOfTheWeek] + ", "+ dayOfMonth}
             </Box>
             
             <Box className={styles.rowChanceOfRain}>
