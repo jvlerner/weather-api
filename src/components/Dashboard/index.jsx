@@ -3,6 +3,7 @@
 import { Box } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { useRequestForecast } from '../../hooks/Request/useRequestForecast'
+import { useRequestGeoLocation } from '../../hooks/Request/useRequestGeoLocation'
 import { CurrentWeatherCard } from '../CurrentWeatherCard'
 import styles from './styles.module.css'
 import { TimeForecast } from '../TimeForecast'
@@ -12,15 +13,30 @@ import lottieCloud from '../../assets/lotties/cloud.json'
 
 export function Dashboard() {
     const { getForecast } = useRequestForecast()
+    const { getGeoLocation } = useRequestGeoLocation()
     const [response, setResponse] = useState([])
 
+
     const handleGetForecast = () => {
-        getForecast('Palhoça', 10, true, true).then((response) => {
-            const data = response?.data
-  
-            setResponse(data)
-        })
+        const currentLocation = (position) => {
+            getGeoLocation(position.coords.latitude, position.coords.longitude).then(response => {
+                const city = response?.data?.features[0].properties.city
+                console.log(city)
+                getForecast(city, 10, true, true).then((response) => {
+                    const data = response?.data
+                    setResponse(data)
+                    console.log(data)
+                })
+            })
+        }
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(currentLocation)
+        }
+        else {
+            alert('Sorry, but your location are disable.')
+        }
     }
+
 
     const mergeArrayHours = (hoursToday, hoursTomorrow) => {
         if (!hoursToday || !hoursTomorrow) {
@@ -32,7 +48,7 @@ export function Dashboard() {
 
     useEffect(() => {
         handleGetForecast()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
@@ -41,7 +57,7 @@ export function Dashboard() {
                 <LottieFile animationData={lottieCloud} height="100%" width="100%" />
             </Box>
 
-            <Box sx={{ display:'flex', flexDirection:'column', marginTop: 2, fontSize: '25px', fontWeight: 700 }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', marginTop: 2, fontSize: '25px', fontWeight: 700 }}>
                 {response.location?.name} - {response.location?.region}
             </Box>
 
