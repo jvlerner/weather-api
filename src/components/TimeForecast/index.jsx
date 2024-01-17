@@ -7,6 +7,7 @@ import { HourWeatherCard } from "../HourWeatherCard"
 import { TitleCard } from '../TitleCard'
 
 export function TimeForecast({ hours }) {
+    let currentHour = new Date().getHours()
     return (
         <Box className={`${styles.containerHour} shadowCard`}>
             <TitleCard
@@ -20,15 +21,15 @@ export function TimeForecast({ hours }) {
             >
 
             {hours?.map((hour, index) => {
-                return (
+                return index >= currentHour? (
                     <HourWeatherCard
                         key={index}
                         isDay={hour?.is_day}
                         icon={hour?.condition?.icon}
-                        hour={hour.time.slice(11, 13)}
+                        hour={index === currentHour?"Now":hour.time.slice(11, 13)}
                         temp={parseInt(hour.temp_c)}
                     />
-                )
+                ):""
             })}
             </Box>
         </Box>
