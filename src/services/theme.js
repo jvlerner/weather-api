@@ -1,6 +1,6 @@
 // theme.js ou theme.ts
 import { createTheme } from '@mui/material/styles'
-import { blue, grey } from '@mui/material/colors'
+import { blue } from '@mui/material/colors'
 
 export const lightTheme = createTheme({
   palette: {
