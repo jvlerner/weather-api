@@ -21,7 +21,7 @@ export function DayForecast({ date, icon, minTemp, maxTemp, chanceOfRain }) {
             alignItems="center"
         >
             <Box width="120px">
-                {dayOfMonth == currentDay ? 'Today' : DAYS_OF_THE_WEEK[dayOfTheWeek] + ", " + dayOfMonth}
+                {dayOfMonth === currentDay ? 'Today' : DAYS_OF_THE_WEEK[dayOfTheWeek] + ", " + dayOfMonth}
             </Box>
 
             <Box className={styles.rowChanceOfRain}>
