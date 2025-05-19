@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.0](https://github.com/jvlerner/weather-api/compare/v1.0.1...v1.1.0) (2025-05-19)
+
+
+### Features
+
+* **theme:** add theme provider and edit background colors ([2981fb0](https://github.com/jvlerner/weather-api/commit/2981fb03b92eb0f8e459450042d16d9276528830))
+* **theme:** add theme provider and edit background colors ([1247fe8](https://github.com/jvlerner/weather-api/commit/1247fe864b28e02b166e80540d842d7057d7a14f))
+
 ## [1.0.1](https://github.com/jvlerner/weather-api/compare/v1.0.0...v1.0.1) (2025-05-19)
 
 
