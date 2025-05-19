@@ -12,40 +12,35 @@ export default function LocationSelect() {
   const { location, setLocation } = useContext(LocationContext)
 
   const [completes, setCompletes] = useState([])
-  const [text, setText] = useState('')
+  const [inputText, setInputText] = useState('')
+  const [selectedLocation, setSelectedLocation] = useState(null)
 
-  const handleChange = (value) => {
-    setText(value)
-  }
-
-  const handleClickOpen = () => {
-    setOpen(true)
-  }
+  const handleClickOpen = () => setOpen(true)
 
   const handleClose = (event, reason) => {
-    if (reason !== 'backdropClick') {
-      setOpen(false)
-    }
+    if (reason !== 'backdropClick') setOpen(false)
   }
 
   const handleConfirmLocation = () => {
-    setLocation(text)
+    if (selectedLocation) {
+      const city = selectedLocation.formatted.split(',')[0].trim()
+      setLocation(city)
+    }
     setOpen(false)
   }
 
   useEffect(() => {
-      if (!text || text.length === 0) {
-        setCompletes([])
-        return
-      }
+    if (!inputText || inputText.length < 3) {
+      setCompletes([])
+      return
+    }
 
-      getCompleteLocation(text).then((response) => {
-        const data = response?.data?.results
-
-        setCompletes(data)
-      })
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [text])
+    getCompleteLocation(inputText).then((response) => {
+      const data = response?.data?.results || []
+      setCompletes(data)
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inputText])
 
   return (
     <div>
@@ -57,25 +52,36 @@ export default function LocationSelect() {
           <Box component="form" sx={{ display: 'flex', flexWrap: 'wrap' }}>
             <FormControl sx={{ m: 1, minWidth: 120 }}>
               <Autocomplete
-                id="country-select-demo"
                 sx={{ width: 300 }}
                 options={completes}
                 autoHighlight
-                getOptionLabel={(complete) => complete.formatted}
-                renderOption={(props, complete) => (
-                  <Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
-                    {complete.formatted}
+                value={selectedLocation}
+                inputValue={inputText}
+                isOptionEqualToValue={(option, value) =>
+                  option.place_id === value.place_id
+                }
+                getOptionLabel={(option) => option.formatted || ''}
+                onInputChange={(event, newInputValue) => {
+                  setInputText(newInputValue)
+                }}
+                onChange={(event, newValue) => {
+                  setSelectedLocation(newValue)
+                  if (newValue?.formatted) {
+                    setInputText(newValue.formatted)
+                  }
+                }}
+                renderOption={(props, option) => (
+                  <Box component="li" {...props}>
+                    {option.formatted}
                   </Box>
                 )}
                 renderInput={(params) => (
                   <TextField
                     {...params}
                     label="Search here"
-                    onChange={e => handleChange(e.target.value)}
-                    value={text}
                     inputProps={{
                       ...params.inputProps,
-                      autoComplete: 'new-password', // disable autocomplete and autofill
+                      autoComplete: 'new-password',
                     }}
                   />
                 )}
@@ -90,5 +96,4 @@ export default function LocationSelect() {
       </Dialog>
     </div>
   );
-
 }

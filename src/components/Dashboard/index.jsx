@@ -55,10 +55,6 @@ export function Dashboard() {
 
     useEffect(() => {
         handleGetForecast()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
-    useEffect(() => {
         if (!location || location.length === 0) {
             return
         }

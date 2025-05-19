@@ -1,19 +1,19 @@
 import React from "react"
 import PropTypes from 'prop-types'
 import { Box } from '@mui/material'
+import { DateTime } from 'luxon';
 import styles from '../styles.module.css'
 
-const DAYS_OF_THE_WEEK = ['Saturday','Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+const DAYS_OF_THE_WEEK = ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
 
 export function DayForecast({ date, icon, minTemp, maxTemp, chanceOfRain }) {
-    const dateForecast = new Date(date)
-    const dayOfTheWeek = dateForecast.getUTCDay()
-    const dayOfMonth = dateForecast.getDate()
-
+    const dateForecast = DateTime.fromISO(date, { zone: "America/Sao_Paulo" });
+    const dayOfTheWeek = dateForecast.get('weekday')
+    const dayOfMonth = dateForecast.get('day')
     const currentDate = new Date()
     const currentDay = currentDate.getDate()
 
-    return currentDay <= dayOfMonth? (
+    return currentDay <= dayOfMonth ? (
         <Box
             display="flex"
             gap={2}
@@ -21,27 +21,26 @@ export function DayForecast({ date, icon, minTemp, maxTemp, chanceOfRain }) {
             alignItems="center"
         >
             <Box width="120px">
-                {dayOfMonth === currentDay ? 'Today' : DAYS_OF_THE_WEEK[dayOfTheWeek] + ", "+ dayOfMonth}
+                {dayOfMonth == currentDay ? 'Today' : DAYS_OF_THE_WEEK[dayOfTheWeek] + ", " + dayOfMonth}
             </Box>
-            
+
             <Box className={styles.rowChanceOfRain}>
                 <img src={icon} width="30px" alt="Icon" />
 
-                { chanceOfRain > 0 ? (
+                {chanceOfRain > 0 ? (
                     <Box className={styles.labelChanceOfRain}>
-                        { chanceOfRain }%
+                        {chanceOfRain}%
                     </Box>
-                ) : '' }
+                ) : ''}
             </Box>
 
             <Box display="flex" alignItems="center">
-                { minTemp }º
+                {minTemp}º
                 <hr className={styles.linhaMinMaxTemp}></hr>
-                { maxTemp }º
+                {maxTemp}º
             </Box>
-
         </Box>
-    ):""
+    ) : ""
 }
 
 DayForecast.propTypes = {
