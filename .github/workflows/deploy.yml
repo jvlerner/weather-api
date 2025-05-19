@@ -23,11 +23,15 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-      
+
       - name: Configure Git identity
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Set up GitHub token for gh-pages
+        run: |
+          git remote set-url origin https://x-access-token:${{ secrets.MY_RELEASE_PLEASE_TOKEN }}@github.com/${{ github.repository }}
 
       - name: Run deploy script
         env:
