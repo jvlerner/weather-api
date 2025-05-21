@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.0](https://github.com/jvlerner/weather-api/compare/v1.1.1...v1.2.0) (2025-05-21)
+
+
+### Features
+
+* **debounce:** geoapify debounce complete ([60ecddb](https://github.com/jvlerner/weather-api/commit/60ecddb170537973a4da066ab1715fba2302ca89))
+* **debounce:** geoapify debounce complete ([b7ab2f1](https://github.com/jvlerner/weather-api/commit/b7ab2f1d75d7ca144377d864bdc8034fbb1d069b))
+
 ## [1.1.1](https://github.com/jvlerner/weather-api/compare/v1.1.0...v1.1.1) (2025-05-19)
 
 
