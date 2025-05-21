@@ -17,20 +17,27 @@ export function TimeForecast({ hours }) {
 
             <Box
                 className={styles.scrollHour}
-                sx={{ display:'flex', overflowX:'auto' }}
+                sx={{ display: 'flex', overflowX: 'auto' }}
             >
 
-            {hours?.map((hour, index) => {
-                return index >= currentHour? (
-                    <HourWeatherCard
-                        key={index}
-                        isDay={hour?.is_day}
-                        icon={hour?.condition?.icon}
-                        hour={index === currentHour?"Now":hour.time.slice(11, 13)}
-                        temp={parseInt(hour.temp_c)}
-                    />
-                ):""
-            })}
+                {hours?.map((hour, index) => {
+                    if (index < currentHour) return null;
+
+                    const hour24 = parseInt(hour.time.slice(11, 13));
+                    const period = hour24 >= 12 ? 'PM' : 'AM';
+                    const hour12 = hour24 % 12 === 0 ? 12 : hour24 % 12;
+
+                    return (
+                        <HourWeatherCard
+                            key={index}
+                            isDay={hour?.is_day}
+                            icon={hour?.condition?.icon}
+                            hour={index === currentHour ? "Now" : `${hour12}${period}`}
+                            temp={parseInt(hour.temp_c)}
+                        />
+                    );
+                })}
+
             </Box>
         </Box>
     )
