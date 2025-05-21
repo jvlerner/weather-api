@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.2](https://github.com/jvlerner/weather-api/compare/v1.2.1...v1.2.2) (2025-05-21)
+
+
+### Bug Fixes
+
+* **debounce:** onchange remove loop ([c8a48b2](https://github.com/jvlerner/weather-api/commit/c8a48b22908e82f2c23fb3c4444f4d08aef02b0e))
+* **debounce:** onchange remove loop ([ec4aa87](https://github.com/jvlerner/weather-api/commit/ec4aa873fd395ef053a57bbc320625154e45dd0f))
+
 ## [1.2.1](https://github.com/jvlerner/weather-api/compare/v1.2.0...v1.2.1) (2025-05-21)
 
 
