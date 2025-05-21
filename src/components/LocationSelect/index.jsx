@@ -73,9 +73,6 @@ export default function LocationSelect() {
                 }}
                 onChange={(event, newValue) => {
                   setSelectedLocation(newValue)
-                  if (newValue?.formatted) {
-                    setInputText(newValue.formatted)
-                  }
                 }}
                 renderOption={(props, option) => (
                   <Box component="li" {...props}>
