@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.0](https://github.com/jvlerner/weather-api/compare/v1.3.0...v1.4.0) (2025-05-21)
+
+
+### Features
+
+* **dashboard:** add air quality and wind cards ([480303d](https://github.com/jvlerner/weather-api/commit/480303d110579ff40875f2f1c51ed537801d3772))
+* **dashboard:** add air quality and wind cards ([60ef914](https://github.com/jvlerner/weather-api/commit/60ef914824c2ca5a836a7bf11e13dec20f3bb789))
+
 ## [1.3.0](https://github.com/jvlerner/weather-api/compare/v1.2.2...v1.3.0) (2025-05-21)
 
 
