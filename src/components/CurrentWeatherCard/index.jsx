@@ -17,8 +17,8 @@ export function CurrentWeatherCard({ currentTemp, icon, condition, max, min }) {
             </Box>
             <Typography variant="h6" >{condition}</Typography>
             <Box className={styles.variant}>
-                <Typography variant="subtitle2">Max.: {max}º</Typography>
-                <Typography variant="subtitle2">Min.: {min}º</Typography>
+                <Typography variant="subtitle2">H: {max}º</Typography>
+                <Typography variant="subtitle2">L: {min}º</Typography>
             </Box>
         </Box>
     )

@@ -11,7 +11,7 @@ export function DaysForecast({ days }) {
         <Box className={`${styles.container} shadowCard`}>
             <TitleCard
                 icon={<CalendarMonthIcon />}
-                title="Days Forecast"
+                title="3-Days Forecast"
             />
 
             <Box className={styles.listDaysForecast}>

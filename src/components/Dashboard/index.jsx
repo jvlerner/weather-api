@@ -12,6 +12,8 @@ import { LottieFile } from '../LottieFile'
 import lottieCloud from '../../assets/lotties/cloud.json'
 import LocationSelect from '../LocationSelect'
 import { LocationContext } from '../../contexts/LocationContext';
+import { WindCard } from '../WindCard'
+import { AirQualityCard } from '../AirQualityCard'
 
 export function Dashboard() {
     const { getForecast } = useRequestForecast()
@@ -69,8 +71,8 @@ export function Dashboard() {
                 <LottieFile animationData={lottieCloud} height="100%" width="100%" />
             </Box>
 
-            <Box sx={{ display: 'flex', alignItems:'center', flexDirection: 'column', marginTop: 2, fontSize: '25px', fontWeight: 700 }}>
-              <LocationSelect/>
+            <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', marginTop: 2, fontSize: '25px', fontWeight: 700 }}>
+                <LocationSelect />
             </Box>
 
             <CurrentWeatherCard
@@ -87,8 +89,10 @@ export function Dashboard() {
                 />
 
                 <DaysForecast days={response?.forecast?.forecastday} />
-                <Box display='flex'>
-                   
+                <WindCard current={response?.current}></WindCard>
+                <AirQualityCard air={response?.current?.air_quality}></AirQualityCard>
+                <Box display='flex' flexDirection='row' justifyContent='space-between' width='100%' gap={2}>
+
                 </Box>
             </Box>
         </Box>

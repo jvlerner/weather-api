@@ -3,11 +3,10 @@
     flex-direction:column;
     border-radius: 10px;
     background-color:rgba(0,0,0,0.1);
-    height: auto;
     /* max-width: 400px; */
     width: 100%;
     padding: 2px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .linhaMinMaxTemp {
@@ -35,6 +34,6 @@
     display:flex;
     gap:16px;
     flex-direction:column;
-    height: 300px;
+    max-height: 300px;
     overflow-y: scroll;
 }
