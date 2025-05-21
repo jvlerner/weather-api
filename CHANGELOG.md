@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.0](https://github.com/jvlerner/weather-api/compare/v1.2.2...v1.3.0) (2025-05-21)
+
+
+### Features
+
+* **ico:** add favicon ([9631e7e](https://github.com/jvlerner/weather-api/commit/9631e7e66a9af84a4f8940b5ce9ce60016f0e6a1))
+* **ico:** add favicon ([0ee5c5b](https://github.com/jvlerner/weather-api/commit/0ee5c5bf090fe5ce81eea59a95f4d43074149192))
+
 ## [1.2.2](https://github.com/jvlerner/weather-api/compare/v1.2.1...v1.2.2) (2025-05-21)
 
 
