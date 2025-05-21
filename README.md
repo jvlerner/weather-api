@@ -1,72 +1,99 @@
-# Getting Started with Create React App
+# Weather API
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este projeto foi criado com [Create React App](https://github.com/facebook/create-react-app).
 
-Link website: https://ajweatherapi.netlify.app/
+🔗 **Link do site:** [https://jvlerner.github.io/weather-api/](https://jvlerner.github.io/weather-api/)
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Scripts disponíveis
+
+No diretório do projeto, você pode executar:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Executa o aplicativo no modo de desenvolvimento.  
+Abra [http://localhost:3000](http://localhost:3000) para visualizar no navegador.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+A página será recarregada sempre que você fizer alterações.  
+Você também verá erros de lint no console.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Cria uma versão otimizada do aplicativo para produção na pasta `build/`.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `npm run deploy`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Faz o deploy da aplicação para o **GitHub Pages** utilizando o pacote `gh-pages`.  
+Antes do deploy, o build será executado automaticamente (`predeploy`).
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 📦 Deploy
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+O deploy é realizado automaticamente no GitHub Pages após o build.  
+O site está publicado em:  
+👉 [https://jvlerner.github.io/weather-api/](https://jvlerner.github.io/weather-api/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## ✅ Commits - Padrão Conventional Commits
 
-## Learn More
+Este projeto segue o padrão de **[Conventional Commits](https://www.conventionalcommits.org/)**, para manter um histórico organizado e automatizar processos de release.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**Formato:**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```<tipo>(escopo opcional): <descrição>```
 
-### Code Splitting
+**Exemplos:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- `feat: add weather forecast component`
+- `fix: correct API response handling`
+- `docs: update README with contribution guide`
 
-### Analyzing the Bundle Size
+**Tipos comuns:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+| Tipo     | Descrição                                      |
+|---------- |----------------------------------------------|
+| !feat     | Uma nova funcionalidade com breaking changes  |
+| feat      | Uma nova funcionalidade                       |
+| !fix      | Correção de bug com breaking changes          |
+| fix       | Correção de bug                               |
+| docs      | Alterações na documentação                    |
+| chore     | Ajustes de configuração ou dependências       |
+| refactor  | Refatoração sem alteração de funcionalidade   |
+| style     | Alterações de estilo (formatação, lint)       |
+| test      | Adição ou ajuste de testes                    |
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🛠️ Como contribuir
 
-### Advanced Configuration
+1. Faça um **fork** deste repositório.
+2. Clone o repositório para sua máquina local:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+   `git clone https://github.com/seu-usuario/weather-api.git`
 
-### Deployment
+3. Crie uma nova **branch** a partir da `main`:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+   `git checkout -b feat/nome-da-sua-feature`
 
-### `npm run build` fails to minify
+4. Faça suas alterações no código.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+5. Realize commits seguindo o padrão **Conventional Commits**:
+
+   `git commit -m "feat: descrição da sua feature"`
+
+6. Envie sua branch para o repositório remoto:
+
+   `git push origin feat/nome-da-sua-feature`
+
+7. Abra uma **Pull Request (PR)** para a branch `main` no GitHub.
+
+---
+
+**✔️ Antes de enviar a PR:**
+
+- [ ] Verifique se o código está buildando (`npm run build`).
+- [ ] Confirme que não há erros de lint.
+- [ ] Garanta que os commits seguem o padrão **Conventional Commits**.
