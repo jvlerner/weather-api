@@ -35,12 +35,19 @@ export default function LocationSelect() {
       return
     }
 
-    getCompleteLocation(inputText).then((response) => {
-      const data = response?.data?.results || []
-      setCompletes(data)
-    })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [inputText])
+    const handler = setTimeout(() => {
+      getCompleteLocation(inputText).then((response) => {
+        const data = response?.data?.results || []
+        setCompletes(data)
+      })
+    }, 900)
+
+    return () => {
+      clearTimeout(handler)
+    }
+  }, [inputText, getCompleteLocation])
+
+
 
   return (
     <div>
