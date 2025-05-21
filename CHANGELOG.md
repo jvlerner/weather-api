@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.1](https://github.com/jvlerner/weather-api/compare/v1.1.0...v1.1.1) (2025-05-19)
+
+
+### Bug Fixes
+
+* **unsed vars:** remove var grey from theme ([8f2e2aa](https://github.com/jvlerner/weather-api/commit/8f2e2aaa59c76410d03a2bcdd33c77ef3ed1de13))
+* **unsed vars:** remove var grey from theme ([cdc7893](https://github.com/jvlerner/weather-api/commit/cdc78937b83be99676bc9021b8c7e37ced46023c))
+
 ## [1.1.0](https://github.com/jvlerner/weather-api/compare/v1.0.1...v1.1.0) (2025-05-19)
 
 
