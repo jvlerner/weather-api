@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.1](https://github.com/jvlerner/weather-api/compare/v1.2.0...v1.2.1) (2025-05-21)
+
+
+### Bug Fixes
+
+* **deploy:** deploy on tag creation ([2b8cdb9](https://github.com/jvlerner/weather-api/commit/2b8cdb99c9011fe7fe163b4aeb5caa1145451d6c))
+* **deploy:** deploy on tag creation ([c01f39c](https://github.com/jvlerner/weather-api/commit/c01f39c4427682849dbfd3d8a6c6bedb84c758b8))
+
 ## [1.2.0](https://github.com/jvlerner/weather-api/compare/v1.1.1...v1.2.0) (2025-05-21)
 
 
