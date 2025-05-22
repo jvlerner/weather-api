@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.5.0](https://github.com/jvlerner/weather-api/compare/v1.4.0...v1.5.0) (2025-05-22)
+
+
+### Features
+
+* **ui/ux:** use themes and background by weather condition ([b5bfabe](https://github.com/jvlerner/weather-api/commit/b5bfabe3080c0f0b6ce9ff85b4905a9cde525ad9))
+* **ui/ux:** use themes and background by weather condition ([da29947](https://github.com/jvlerner/weather-api/commit/da2994768ccb0a5ca03542c9d8308a455602ceac))
+
 ## [1.4.0](https://github.com/jvlerner/weather-api/compare/v1.3.0...v1.4.0) (2025-05-21)
 
 
