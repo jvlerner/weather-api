@@ -6,46 +6,74 @@ import { TitleCard } from '../TitleCard'
 import AirIcon from '@mui/icons-material/Air'
 import styles from './styles.module.css'
 
-export function WindCard({ current }) {
+export function WindCard({ data }) {
+    const {
+        windKph,
+        gustKph,
+        windDir,
+        windDegree
+    } = data
+
     return (
         <Box className={`${styles.container} shadowCard`}>
             <TitleCard title="Wind" icon={<AirIcon />} />
 
-            <Box className={styles.windContent}>
-                <Box className={styles.windData}>
+            <Box
+                display="flex"
+                flexWrap="wrap"
+                justifyContent="space-between"
+                alignItems="center"
+                p={2}
+                gap={1}
+                >
+                <Box
+                    flex="1 1 120px"
+                    display="flex"
+                    flexDirection="column"
+                    gap={1}
+                >
                     <Typography variant="body2">
-                        Wind: {Math.round(current?.wind_kph)} km/h
+                    Wind: {Math.round(windKph ?? 0)} km/h
                     </Typography>
-                    <Divider className={styles.divider} />
+                    <Divider className={styles.divider} sx={{ width: '100%' }} />
                     <Typography variant="body2">
-                        Gusts: {Math.round(current?.gust_kph ?? 0)} km/h
+                    Gusts: {Math.round(gustKph ?? 0)} km/h
                     </Typography>
-                    <Divider className={styles.divider} />
+                    <Divider className={styles.divider} sx={{ width: '100%' }} />
                     <Typography variant="body2">
-                        Direction: {current?.wind_degree}° {current?.wind_dir}
+                    Direction: {windDegree ?? 0}° {windDir ?? ''}
                     </Typography>
                 </Box>
 
-
-                <Box className={styles.windIcon}>
-                    <Typography variant="body1" fontWeight={500}>
-                        {Math.round(current?.wind_kph)} km/h
+                <Box
+                    flex="1 1 120px"
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                >
+                    <Box
+                    display="flex"
+                    flexDirection="column"
+                    alignItems="center"
+                    gap={1}
+                    >
+                    <Typography variant="body2" fontWeight={500}>
+                        {Math.round(windKph ?? 0)} km/h
                     </Typography>
 
                     <NavigationIcon
                         className={styles.arrowIcon}
-                        style={{
-                            transform: `rotate(${current?.wind_degree}deg)`
-                        }}
-                        sx={{ fontSize: '3rem' }}
+                        style={{ transform: `rotate(${windDegree ?? 0}deg)` }}
+                        sx={{ fontSize: '2.5rem' }}
                     />
 
                     <Typography variant="caption" color="textSecondary">
-                        {current?.wind_degree}°
+                        {windDegree ?? 0}°
                     </Typography>
-                    <Typography variant="caption" color="textSecondary">
-                        {current?.wind_dir}
+                    <Typography variant="body2" color="textSecondary">
+                        {windDir ?? ''}
                     </Typography>
+                    </Box>
                 </Box>
             </Box>
         </Box>
@@ -53,10 +81,10 @@ export function WindCard({ current }) {
 }
 
 WindCard.propTypes = {
-    current: PropTypes.shape({
-        wind_kph: PropTypes.number.isRequired,
-        gust_kph: PropTypes.number,
-        wind_dir: PropTypes.string.isRequired,
-        wind_degree: PropTypes.number.isRequired
+    data: PropTypes.shape({
+        windKph: PropTypes.number.isRequired,
+        gustKph: PropTypes.number,
+        windDir: PropTypes.string.isRequired,
+        windDegree: PropTypes.number.isRequired
     }).isRequired
 }

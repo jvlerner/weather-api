@@ -13,27 +13,26 @@ export function DaysForecast({ days }) {
                 icon={<CalendarMonthIcon />}
                 title="3-Days Forecast"
             />
-
-            <Box className={styles.listDaysForecast}>
-                {days?.map((day, index) => {
-                    return (
-                        <DayForecast
-                            key={index}
-                            date={day.date}
-                            icon={day.day.condition.icon}
-                            maxTemp={parseInt(day.day.maxtemp_c)}
-                            minTemp={parseInt(day.day.mintemp_c)}
-                            chanceOfRain={day.day?.daily_will_it_rain ? day.day?.daily_chance_of_rain :  0}
-                        />
-                    )
-                })}
+            <Box className={styles.listDaysForecast} p={2}>
+                {days.map((day, index) => (
+                    <DayForecast key={index} day={day} index={index} />
+                ))}
             </Box>
         </Box>
     )
 }
 
 DaysForecast.propTypes = {
-    days: PropTypes.instanceOf(Array)
+    days: PropTypes.arrayOf(PropTypes.shape({
+        date: PropTypes.string.isRequired,
+        maxTemp: PropTypes.number.isRequired,
+        minTemp: PropTypes.number.isRequired,
+        condition: PropTypes.shape({
+            text: PropTypes.string,
+            icon: PropTypes.string
+        }).isRequired,
+        dailyChanceOfRain: PropTypes.number
+    }))
 }
 
 DaysForecast.defaultProps = {
