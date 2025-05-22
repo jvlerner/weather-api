@@ -1,69 +1,25 @@
-// eslint-disable react-hooks/exhaustive-deps
-
 import { Box } from '@mui/material'
-import React, { useContext, useEffect, useState } from 'react'
-import { useRequestForecast } from '../../hooks/Request/useRequestForecast'
-import { useRequestGeoLocation } from '../../hooks/Request/useRequestGeoLocation'
-import { CurrentWeatherCard } from '../CurrentWeatherCard'
 import styles from './styles.module.css'
 import { TimeForecast } from '../TimeForecast'
 import { DaysForecast } from '../DaysForecast'
 import { LottieFile } from '../LottieFile'
 import lottieCloud from '../../assets/lotties/cloud.json'
 import LocationSelect from '../LocationSelect'
-import { LocationContext } from '../../contexts/LocationContext';
+import { CurrentWeatherCard } from '../CurrentWeatherCard'
 import { WindCard } from '../WindCard'
 import { AirQualityCard } from '../AirQualityCard'
+import { AirQualityfromWeatherApi, CurrentWeatherfromWeatherApi, ForecastDaysfromWeatherApi, WindfromWeatherApi } from '../../services/adapters'
 
-export function Dashboard() {
-    const { getForecast } = useRequestForecast()
-    const { getGeoLocation } = useRequestGeoLocation()
-    const [response, setResponse] = useState([])
-    const { location, setLocation } = useContext(LocationContext)
-
-    const requestGetForecast = (locationRequest) => {
-        getForecast(locationRequest, 10, true, true).then((response) => {
-            const data = response?.data
-            setResponse(data)
-        })
-    }
-
-    const handleGetForecast = () => {
-        const currentLocation = (position) => {
-            getGeoLocation(position.coords.latitude, position.coords.longitude).then(response => {
-                const city = response?.data?.features[0].properties.city
-
-                setLocation(city)
-                requestGetForecast(city)
-            })
-        }
-
-        if (navigator.geolocation === !undefined || !location) {
-            navigator.geolocation.getCurrentPosition(currentLocation)
-            return
-        }
-
-        requestGetForecast(location)
-    }
-
-
+export function Dashboard({ data }) {
     const mergeArrayHours = (hoursToday, hoursTomorrow) => {
-        if (!hoursToday || !hoursTomorrow) {
-            return []
-        }
-
+        if (!hoursToday || !hoursTomorrow) return []
         return hoursToday.concat(hoursTomorrow)
     }
-
-    useEffect(() => {
-        handleGetForecast()
-        if (!location || location.length === 0) {
-            return
-        }
-
-        requestGetForecast(location)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [location])
+    
+    const currentWeatherData = CurrentWeatherfromWeatherApi(data)
+    const forecastDaysData = ForecastDaysfromWeatherApi(data)
+    const airQualityData = AirQualityfromWeatherApi(data)
+    const windData = WindfromWeatherApi(data)
 
     return (
         <Box className={styles.container}>
@@ -75,24 +31,21 @@ export function Dashboard() {
                 <LocationSelect />
             </Box>
 
-            <CurrentWeatherCard
-                condition={response?.current?.condition?.text ?? ''}
-                currentTemp={response.current?.temp_c ?? 0}
-                icon={response.current?.condition?.icon ?? ''}
-                max={response?.forecast?.forecastday[0]?.day.maxtemp_c ?? 0}
-                min={response?.forecast?.forecastday[0]?.day.mintemp_c ?? 0}
-            />
+            <CurrentWeatherCard data={currentWeatherData} />
 
             <Box className={styles.boxCards}>
                 <TimeForecast
-                    hours={mergeArrayHours(response?.forecast?.forecastday[0]?.hour, response?.forecast?.forecastday[1]?.hour)}
+                    hours={mergeArrayHours(
+                        data?.forecast?.forecastday[0]?.hour,
+                        data?.forecast?.forecastday[1]?.hour
+                    )}
                 />
 
-                <DaysForecast days={response?.forecast?.forecastday} />
-                <WindCard current={response?.current}></WindCard>
-                <AirQualityCard air={response?.current?.air_quality}></AirQualityCard>
-                <Box display='flex' flexDirection='row' justifyContent='space-between' width='100%' gap={2}>
+                <DaysForecast days={forecastDaysData} />
 
+                <Box display='flex' flexDirection='row' justifyContent='space-between' width='100%' gap={2}>
+                    <WindCard data={windData} />
+                    <AirQualityCard data={airQualityData} />
                 </Box>
             </Box>
         </Box>

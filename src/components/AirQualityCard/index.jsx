@@ -24,49 +24,62 @@ function getColor(pollutant, value) {
     return '#FF0000'                          // Vermelho
 }
 
-export function AirQualityCard({ air }) {
-    if (!air) {
+export function AirQualityCard({ data }) {
+    if (!data) {
         return (
             <Box className={`${styles.container} shadowCard`}>
                 <TitleCard icon={<AirIcon />} title="Air Quality" />
-                <Typography variant="body2">Dados indisponíveis.</Typography>
+                <Box display="flex" justifyContent="center" alignItems="center" height="100%">
+                    <Typography variant="body2">No data available</Typography>
+                </Box>
             </Box>
         )
     }
 
-    const data = [
-        { label: 'CO', value: air.co, key: 'co' },
-        { label: 'NO₂', value: air.no2, key: 'no2' },
-        { label: 'O₃', value: air.o3, key: 'o3' },
-        { label: 'SO₂', value: air.so2, key: 'so2' },
-        { label: 'PM2.5', value: air.pm2_5, key: 'pm2_5' },
-        { label: 'PM10', value: air.pm10, key: 'pm10' },
-        { label: 'US EPA Index', value: air['us-epa-index'], key: 'epa' },
-        { label: 'GB DEFRA Index', value: air['gb-defra-index'], key: 'defra' }
+    const {
+        co,
+        no2,
+        o3,
+        so2,
+        pm25,
+        pm10,
+        usEpaIndex,
+        gbDefraIndex
+    } = data
+
+    const airData = [
+        { label: 'CO', value: co, key: 'co' },
+        { label: 'NO₂', value: no2, key: 'no2' },
+        { label: 'O₃', value: o3, key: 'o3' },
+        { label: 'SO₂', value: so2, key: 'so2' },
+        { label: 'PM2.5', value: pm25, key: 'pm25' },
+        { label: 'PM10', value: pm10, key: 'pm10' },
+        { label: 'US EPA Index', value: usEpaIndex, key: 'epa' },
+        { label: 'GB DEFRA Index', value: gbDefraIndex, key: 'defra' }
     ]
 
     return (
         <Box className={`${styles.container} shadowCard`}>
             <TitleCard icon={<AirIcon />} title="Air Quality" />
 
-            <Box display="flex" justifyContent="space-around" mt={2}>
-                <Box display="flex" flexDirection="column" gap={1}>
-                    {data.slice(0, 4).map((item) => (
+            <Box display="flex" justifyContent="space-between" flexWrap="wrap" p={2} gap={1}>
+                <Box display="flex" flexDirection="column" gap={1} minWidth="120px">
+                    {airData.slice(0, 4).map((item) => (
                         <Box key={item.label} display="flex" alignItems="center" gap={1}>
                             <Box width={12} height={12} borderRadius="50%" bgcolor={getColor(item.key, item.value)} />
                             <Typography variant="body2">
-                                <strong>{item.label}:</strong> {Math.round(item.value)} µg/m³
+                                {item.label}: {Math.round(item.value ?? 0)} µg/m³
                             </Typography>
                         </Box>
                     ))}
                 </Box>
 
-                <Box display="flex" flexDirection="column" gap={1}>
-                    {data.slice(4).map((item) => (
+                <Box display="flex" flexDirection="column" gap={1} minWidth="120px">
+                    {airData.slice(4).map((item) => (
                         <Box key={item.label} display="flex" alignItems="center" gap={1}>
                             <Box width={12} height={12} borderRadius="50%" bgcolor={getColor(item.key, item.value)} />
                             <Typography variant="body2">
-                                <strong>{item.label}:</strong> {Math.round(item.value)}
+                                {item.label}: {Math.round(item.value ?? 0)}
                             </Typography>
                         </Box>
                     ))}
@@ -77,14 +90,14 @@ export function AirQualityCard({ air }) {
 }
 
 AirQualityCard.propTypes = {
-    air: PropTypes.shape({
-        co: PropTypes.number,
-        no2: PropTypes.number,
-        o3: PropTypes.number,
-        so2: PropTypes.number,
-        pm2_5: PropTypes.number,
-        pm10: PropTypes.number,
-        'us-epa-index': PropTypes.number,
-        'gb-defra-index': PropTypes.number
-    })
+    data: PropTypes.shape({
+        co: PropTypes.number.isRequired,
+        no2: PropTypes.number.isRequired,
+        o3: PropTypes.number.isRequired,
+        so2: PropTypes.number.isRequired,
+        pm25: PropTypes.number.isRequired,
+        pm10: PropTypes.number.isRequired,
+        usEpaIndex: PropTypes.number.isRequired,
+        gbDefraIndex: PropTypes.number.isRequired
+    }).isRequired
 }

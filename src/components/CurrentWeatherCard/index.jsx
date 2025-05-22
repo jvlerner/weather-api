@@ -4,18 +4,25 @@ import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
 import styles from './styles.module.css';
 
-export function CurrentWeatherCard({ currentTemp, icon, condition, max, min }) {
+export function CurrentWeatherCard({ data }) {
+    const { 
+        currentTemp,
+        condition, 
+        max, 
+        min, 
+        icon 
+    } = data;
+
     return (
-        <Box className={styles.container} >
-            <Typography variant="h6" >Current Weather</Typography>
-            <Box className={styles.temperature} >
-                <Typography className={styles.temp} variant="h2" >
+        <Box className={styles.container}>
+            <Typography variant="h6">Current Weather</Typography>
+            <Box className={styles.temperature}>
+                <Typography className={styles.temp} variant="h2">
                     {currentTemp}º
                 </Typography>
-
-                <img src ={icon} alt="Icon" />
+                <img src={icon} alt="Icon" />
             </Box>
-            <Typography variant="h6" >{condition}</Typography>
+            <Typography variant="h6">{condition}</Typography>
             <Box className={styles.variant}>
                 <Typography variant="subtitle2">H: {max}º</Typography>
                 <Typography variant="subtitle2">L: {min}º</Typography>
@@ -25,9 +32,11 @@ export function CurrentWeatherCard({ currentTemp, icon, condition, max, min }) {
 }
 
 CurrentWeatherCard.propTypes = {
-    currentTemp: PropTypes.number.isRequired,
-    condition: PropTypes.string.isRequired,
-    max: PropTypes.number.isRequired,
-    min: PropTypes.number.isRequired,
-    icon: PropTypes.string.isRequired
+    data: PropTypes.shape({
+        currentTemp: PropTypes.number.isRequired,
+        condition: PropTypes.string.isRequired,
+        max: PropTypes.number.isRequired,
+        min: PropTypes.number.isRequired,
+        icon: PropTypes.string.isRequired
+    }).isRequired
 }
