@@ -1,5 +1,5 @@
 import './App.css'
-import { useCallback, useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { ThemeProvider } from '@emotion/react'
 import { CssBaseline, Box } from '@mui/material'
 import { LocationContext } from './contexts/LocationContext'
@@ -14,34 +14,36 @@ function App() {
     const [response, setResponse] = useState([])
     const { location, setLocation } = useContext(LocationContext);
 
+    
+    const currentLocation = (position) => {
+        getGeoLocation(position.coords.latitude, position.coords.longitude).then(res => {
+            const city = res?.data?.features[0]?.properties?.city
+            setLocation(city)
+            requestGetForecast(city)
+        })
+    }
 
-    const handleGetForecast = useCallback(() => {
-        const currentLocation = (position) => {
-            getGeoLocation(position.coords.latitude, position.coords.longitude).then(res => {
-                const city = res?.data?.features[0]?.properties?.city
-                setLocation(city)
-                requestGetForecast(city)
-            })
-        }
+    const requestGetForecast = (locationRequest) => {
+        getForecast(locationRequest, 3, true, true).then((res) => {
+            setResponse(res?.data)
+        })
+    }
 
-        const requestGetForecast = (locationRequest) => {
-            getForecast(locationRequest, 3, true, true).then((res) => {
-                setResponse(res?.data)
-            })
-        }
 
+    const handleGetForecast = () => {
         if (!location) {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(currentLocation)
-            }
+            }else {
+                requestGetForecast(location)}
         } else {
             requestGetForecast(location)
         }
-    }, [location, getGeoLocation, getForecast, setLocation])
+    }
 
     useEffect(() => {
         handleGetForecast()
-    }, [location, handleGetForecast])
+    }, [location, setLocation])
 
     const isDay = response?.current?.is_day === 1
     const condition = response?.current?.condition?.text || ''
