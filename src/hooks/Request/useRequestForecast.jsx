@@ -4,9 +4,6 @@ export function useRequestForecast() {
 
     const getForecast = async (local, days = 1, hasAirQuality = true, hasAlerts = true) => {
         // Parameter local -> Pass US Zipcode, UK Postcode, Canada Postalcode, IP address, Latitude/Longitude (decimal degree) or city name.
-        // Parameter hasAirQuality -> Get air quality data
-        // Parameter hasAlerts -> Get weather alert data
-
         const airQuality = hasAirQuality ? 'yes' : 'no'
         const alerts = hasAlerts ? 'yes' : 'no'
 
@@ -15,7 +12,7 @@ export function useRequestForecast() {
     
             return response
         } catch (error) {
-            return error
+            throw error
         }
     }
 

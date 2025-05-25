@@ -35,7 +35,7 @@ export function ForecastDaysfromWeatherApi(data) {
     const forecastDays = data?.forecast?.forecastday || []
 
     return forecastDays.map(days => ({
-        date: days.date,
+        date: days.date || 'N/A',
         maxTemp: days.day?.maxtemp_c ?? 0,
         minTemp: days.day?.mintemp_c ?? 0,
         condition: {
