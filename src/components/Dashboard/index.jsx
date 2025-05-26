@@ -15,7 +15,7 @@ export function Dashboard({ data }) {
         if (!hoursToday || !hoursTomorrow) return []
         return hoursToday.concat(hoursTomorrow)
     }
-    
+
     const currentWeatherData = CurrentWeatherfromWeatherApi(data)
     const forecastDaysData = ForecastDaysfromWeatherApi(data)
     const airQualityData = AirQualityfromWeatherApi(data)

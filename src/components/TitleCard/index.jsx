@@ -7,10 +7,10 @@ export function TitleCard({ icon, title }) {
     return (
         <>
             <Box className={styles.boxTitleCard}>
-                { icon }
+                {icon}
 
                 <Typography variant="subtitle2">
-                    { title }
+                    {title}
                 </Typography>
             </Box>
 

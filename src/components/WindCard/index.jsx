@@ -25,7 +25,7 @@ export function WindCard({ data }) {
                 alignItems="center"
                 p={2}
                 gap={1}
-                >
+            >
                 <Box
                     flex="1 1 120px"
                     display="flex"
@@ -33,15 +33,15 @@ export function WindCard({ data }) {
                     gap={1}
                 >
                     <Typography variant="body2">
-                    Wind: {Math.round(windKph ?? 0)} km/h
+                        Wind: {Math.round(windKph ?? 0)} km/h
                     </Typography>
                     <Divider className={styles.divider} sx={{ width: '100%' }} />
                     <Typography variant="body2">
-                    Gusts: {Math.round(gustKph ?? 0)} km/h
+                        Gusts: {Math.round(gustKph ?? 0)} km/h
                     </Typography>
                     <Divider className={styles.divider} sx={{ width: '100%' }} />
                     <Typography variant="body2">
-                    Direction: {windDegree ?? 0}° {windDir ?? ''}
+                        Direction: {windDegree ?? 0}° {windDir ?? ''}
                     </Typography>
                 </Box>
 
@@ -52,27 +52,27 @@ export function WindCard({ data }) {
                     alignItems="center"
                 >
                     <Box
-                    display="flex"
-                    flexDirection="column"
-                    alignItems="center"
-                    gap={1}
+                        display="flex"
+                        flexDirection="column"
+                        alignItems="center"
+                        gap={1}
                     >
-                    <Typography variant="body2" fontWeight={500}>
-                        {Math.round(windKph ?? 0)} km/h
-                    </Typography>
+                        <Typography variant="body2" fontWeight={500}>
+                            {Math.round(windKph ?? 0)} km/h
+                        </Typography>
 
-                    <NavigationIcon
-                        className={styles.arrowIcon}
-                        style={{ transform: `rotate(${windDegree ?? 0}deg)` }}
-                        sx={{ fontSize: '2.5rem' }}
-                    />
+                        <NavigationIcon
+                            className={styles.arrowIcon}
+                            style={{ transform: `rotate(${windDegree ?? 0}deg)` }}
+                            sx={{ fontSize: '2.5rem' }}
+                        />
 
-                    <Typography variant="caption" color="textSecondary">
-                        {windDegree ?? 0}°
-                    </Typography>
-                    <Typography variant="body2" color="textSecondary">
-                        {windDir ?? ''}
-                    </Typography>
+                        <Typography variant="caption" color="textSecondary">
+                            {windDegree ?? 0}°
+                        </Typography>
+                        <Typography variant="body2" color="textSecondary">
+                            {windDir ?? ''}
+                        </Typography>
                     </Box>
                 </Box>
             </Box>

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 export function LottieFile({ animationData, isStopped, isPaused, height, width }) {
     const defaultOptions = {
         loop: true,
-        autoplay: true, 
+        autoplay: true,
         animationData: animationData,
         rendererSettings: {
             preserveAspectRatio: 'xMidYMid slice'
