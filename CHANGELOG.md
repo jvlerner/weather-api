@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.5.1](https://github.com/jvlerner/weather-api/compare/v1.5.0...v1.5.1) (2025-05-26)
+
+
+### Bug Fixes
+
+* location ([9516b42](https://github.com/jvlerner/weather-api/commit/9516b42a20460c71ecb0156c41dbb97c497da220))
+* location ([07068b4](https://github.com/jvlerner/weather-api/commit/07068b4b454b0deeaa54ed824f32fe904ecac7ba))
+* remove public api keys ([b510632](https://github.com/jvlerner/weather-api/commit/b5106329e3aa49aff87e2d4fc92a1101036cac76))
+* themes ([4190838](https://github.com/jvlerner/weather-api/commit/41908383a441c13b641aa385aa79abf5b5cc9888))
+
 ## [1.5.0](https://github.com/jvlerner/weather-api/compare/v1.4.0...v1.5.0) (2025-05-22)
 
 
