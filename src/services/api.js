@@ -1,9 +1,14 @@
 import axios from "axios";
 
+const apiKey = process.env.REACT_APP_WEATHER_API_KEY
+if (!apiKey) {
+    throw new Error("REACT_APP_WEATHER_API_KEY is not defined");
+}
+
 const api = axios.create({
     baseURL: 'https://api.weatherapi.com/v1',
     params: {
-        'key': 'ed5cb95f8ee0401e800220140241201' 
+        'key': apiKey
     }
 })
 

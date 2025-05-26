@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
 import styles from './styles.module.css';
 
 export function CurrentWeatherCard({ data }) {
-    const { 
+    const {
         currentTemp,
-        condition, 
-        max, 
-        min, 
-        icon 
+        condition,
+        max,
+        min,
+        icon
     } = data;
 
     return (

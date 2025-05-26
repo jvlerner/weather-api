@@ -8,10 +8,10 @@ export function HourWeatherCard({ icon, hour, temp }) {
     return (
         <Box className={styles.container} >
             <Typography variant="caption">
-                {hour} 
+                {hour}
             </Typography>
 
-            <img className={styles.icon} src ={icon} alt="icon" />
+            <img className={styles.icon} src={icon} alt="icon" />
 
             <Typography variant="subtitle2" >
                 {temp}º

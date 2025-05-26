@@ -9,7 +9,7 @@ export function useRequestForecast() {
 
         try {
             const response = await api.get(`/forecast.json?q=${local}&days=${days}&aqi=${airQuality}&alerts=${alerts}`)
-    
+
             return response
         } catch (error) {
             throw error

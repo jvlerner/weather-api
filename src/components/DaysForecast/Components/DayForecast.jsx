@@ -7,10 +7,10 @@ import styles from '../styles.module.css'
 const daysOfTheWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
 export function DayForecast({ day, index }) {
-    const { date, maxTemp, minTemp, condition, dailyChanceOfRain} = day
+    const { date, maxTemp, minTemp, condition, dailyChanceOfRain } = day
 
     const dateForecast = DateTime.fromISO(date, { zone: "America/Sao_Paulo" })
-    const dayOfTheWeek = dateForecast.weekday % 7 
+    const dayOfTheWeek = dateForecast.weekday % 7
     const dayOfMonth = dateForecast.day
 
     const currentDate = new Date()
@@ -25,21 +25,21 @@ export function DayForecast({ day, index }) {
             key={index}
         >
             <Box minWidth="150px">
-                {dayOfMonth === currentDay ? 'Today, '+ currentDay : daysOfTheWeek[dayOfTheWeek] + ", " + dayOfMonth}
+                {dayOfMonth === currentDay ? 'Today, ' + currentDay : daysOfTheWeek[dayOfTheWeek] + ", " + dayOfMonth}
             </Box>
 
             <Box className={styles.rowChanceOfRain}>
                 <img src={condition?.icon} width="30px" alt="Icon" />
-                
+
                 <Box className={styles.labelChanceOfRain}>
                     {Math.round(dailyChanceOfRain)}%
                 </Box>
             </Box>
 
             <Box display="flex" alignItems="center" justifyContent={"center"} minWidth={"150px"}>
-                { Math.round(minTemp) }º
+                {Math.round(minTemp)}º
                 <hr className={styles.linhaMinMaxTemp}></hr>
-                { Math.round(maxTemp) }º
+                {Math.round(maxTemp)}º
             </Box>
         </Box>
     ) : null

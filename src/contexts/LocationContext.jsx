@@ -4,7 +4,7 @@ const LocationContext = createContext({})
 
 const LocationProvider = ({ children }) => {
     const [location, setLocation] = useState('')
-  
+
     return (
         <LocationContext.Provider
             value={{
@@ -12,7 +12,7 @@ const LocationProvider = ({ children }) => {
                 setLocation
             }}
         >
-            { children }
+            {children}
         </LocationContext.Provider>
     )
 }
