@@ -1,6 +1,6 @@
 {
   "name": "api-clima",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "private": true,
   "homepage": "http://jvlerner.github.io/weather-api",
   "dependencies": {

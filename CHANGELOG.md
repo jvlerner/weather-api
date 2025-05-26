@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.5.2](https://github.com/jvlerner/weather-api/compare/v1.5.1...v1.5.2) (2025-05-26)
+
+
+### Bug Fixes
+
+* add env ([8f4e5d9](https://github.com/jvlerner/weather-api/commit/8f4e5d9a355ec53d2a982bfeb4743315b2124e63))
+* add env ([2f2af0e](https://github.com/jvlerner/weather-api/commit/2f2af0e60d2a2b4f32bee6bada4caf493091152e))
+
 ## [1.5.1](https://github.com/jvlerner/weather-api/compare/v1.5.0...v1.5.1) (2025-05-26)
 
 
